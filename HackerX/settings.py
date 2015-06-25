@@ -65,7 +65,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(os.path.dirname(__file__), '../oauth/templates').replace('\\','/'),
+            os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'oauth/templates')),
+
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -79,6 +80,7 @@ TEMPLATES = [
     },
 ]
 
+print TEMPLATES[0]['DIRS']
 WSGI_APPLICATION = 'HackerX.wsgi.application'
 
 

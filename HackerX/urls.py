@@ -20,4 +20,5 @@ from oauth import views
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', views.index),
+    url(r'^github_oauth/', views.github_oauth),
 ]
