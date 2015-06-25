@@ -21,4 +21,6 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', views.index),
     url(r'^github_oauth/', views.github_oauth),
+    url(r'^(?P<user_name>[a-zA-Z0-9_]*)/$', views.home),
+    
 ]

@@ -1,9 +1,9 @@
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render, redirect
 from credentials import *
 from django.http import HttpResponseRedirect
 import requests, json
-import urllib
-import urllib2
+import urllib, urllib2
+from .models import User
 
 API_BASE_URL = "https://api.github.com"
 # Create your views here.
@@ -29,7 +29,19 @@ def github_oauth(request):
 		req.add_header('Authorization', 'token ' + access_token)
 		resp = urllib2.urlopen(req)
 		content = json.loads(resp.read())
-		print content
+		new_user = User.objects.create(
+			user_name=content['login'],
+			email = content['email'],
+			avatar_url = content['avatar_url'],
+			num_followers = content['followers'],
+			num_following = content['following'],
+			access_token = access_token,
+			num_repos_public = content['public_repos'],
+			location = content['location'],
+			blog_url = content['blog'],
+			company = content['company'],
+		)
+		return redirect('oauth.views.home', user_name=content['login'])
 
 	else:
 		base_url = "https://github.com/login/oauth/authorize"
@@ -38,16 +50,5 @@ def github_oauth(request):
 		oauth_url = base_url + "?client_id=" + CLIENT_ID + "&redirect_uri=" + redirect_uri + "&scope=" + scope + "&state=" + STATE
 		return HttpResponseRedirect(oauth_url)
 
-# def home(request):
-# 	if request.method == 'GET':
-# 		code = request.GET['code']
-# 		state = request.GET['state']
-# 		if state == STATE:
-# 			access_token_url = "https://github.com/login/oauth/access_token"
-# 			payload = {
-# 				'client_id': CLIENT_ID,
-# 				'client_secret': CLIENT_SECRET,
-# 				'code': code,
-# 				'redirect_uri': "http://localhost:8888/"																																																																																																																																										
-# 			}
-# 			r = requests.post(access_token_url , data)
+def home(request, user_name):
+	return render(request, 'home.html', {'user_name': user_name})
