@@ -44,6 +44,7 @@ THIRD_PARTY_APPS = (
 
 LOCAL_APPS = (
     'oauth',
+    'main',
 )
 
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_PARTY_APPS
@@ -67,6 +68,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'oauth/templates')),
+            os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'main/templates')),
 
         ],
         'APP_DIRS': True,

@@ -1,0 +1,32 @@
+<head>
+	<link rel="stylesheet" type="text/css" href="https://raw.githubusercontent.com/ducksboard/gridster.js/master/dist/jquery.gridster.min.css">
+</head>
+<h1>{{ user_name }}</h1>
+<ul>
+
+</ul>
+
+<div class="gridster">
+
+	<!-- <b><li>{{ repo.name }}, {{ repo.description }}, {{ repo.url }}, {{ repo.stargazers_count }}, {{ repo.language }}, {{ repo.forks_count }}</li></b>
+ -->
+    <ul>
+    	{% for repo in github_data %}
+        	<li data-row="{% widthratio forloop.counter0 3 1 %}" data-col="1" data-sizex="1" data-sizey="1">{{ repo.name }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% load staticfiles %}
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script type="text/javascript" src='{% static "main/gridster.js" %}'></script>
+
+<script type="text/javascript">
+      $(function(){ //DOM Ready
+ 
+    $(".gridster ul").gridster({
+        widget_margins: [10, 10],
+        widget_base_dimensions: [140, 140]
+    });
+ 
+});
+    </script>

@@ -1,4 +1,5 @@
 from django.db import models
+from jsonfield import JSONField
 # Create your models here.
 
 class TimeStampedModel(models.Model):
@@ -19,6 +20,7 @@ class User(TimeStampedModel):
 	location = models.CharField(max_length=100)
 	blog_url = models.URLField()
 	company = models.CharField(max_length=75)
+	github_data = JSONField()
 
 	class Meta:
 		db_table = 'github_user'

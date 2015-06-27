@@ -15,12 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from oauth import views
+from oauth import views as oauth_views
+from main import views as main_views
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', views.index),
-    url(r'^github_oauth/', views.github_oauth),
-    url(r'^(?P<user_name>[a-zA-Z0-9_]*)/$', views.home),
-    
+    url(r'^$', oauth_views.index),
+    url(r'^github_oauth/', oauth_views.github_oauth),
+    url(r'^(?P<user_name>[a-zA-Z0-9_]*)/$', main_views.home),    
 ]
