@@ -21,6 +21,7 @@ class User(TimeStampedModel):
 	blog_url = models.URLField()
 	company = models.CharField(max_length=75)
 	github_data = JSONField()
+	required_github_data = JSONField()
 
 	class Meta:
 		db_table = 'github_user'
