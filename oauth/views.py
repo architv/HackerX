@@ -20,7 +20,7 @@ def github_oauth(request):
 			'client_id': CLIENT_ID,
 			'client_secret': CLIENT_SECRET,
 			'code': code,
-			'redirect_uri': REDIRECT_URI + "/home,																																																																																																																																									
+			'redirect_uri': REDIRECT_URI + "/home",																																																																																																																																									
 		}
 		payload = urllib.urlencode(payload)
 		r = urllib2.Request(access_token_url, payload)
