@@ -5,14 +5,9 @@
     <link rel="stylesheet" type="text/css" href="{% static 'main/style.css' %}">
 </head>
 <h1>{{ user_name }}</h1>
-<ul>
-
-</ul>
 
 <div class="gridster">
 
-	<!-- <b><li>{{ repo.name }}, {{ repo.description }}, {{ repo.url }}, {{ repo.stargazers_count }}, {{ repo.language }}, {{ repo.forks_count }}</li></b>
- -->
     <button onclick="dragStart()">Edit</button>
     <button onclick="dragStop()">Save</button>
     <ul>
@@ -120,6 +115,7 @@
             widget_margins: [15, 15],
             widget_base_dimensions: [313, 269],
             max_cols: 3,
+            extra_rows: 0,
         }).data('gridster').disable();
     });
 </script>
