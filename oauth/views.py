@@ -20,7 +20,7 @@ def github_oauth(request):
 			'client_id': CLIENT_ID,
 			'client_secret': CLIENT_SECRET,
 			'code': code,
-			'redirect_uri': "http://localhost:8888/home"																																																																																																																																										
+			'redirect_uri': REDIRECT_URI + "/home,																																																																																																																																									
 		}
 		payload = urllib.urlencode(payload)
 		r = urllib2.Request(access_token_url, payload)
@@ -50,7 +50,7 @@ def github_oauth(request):
 
 	else:
 		base_url = "https://github.com/login/oauth/authorize"
-		redirect_uri = "http://localhost:8888/github_oauth"
+		redirect_uri = REDIRECT_URI + "/github_oauth"
 		scope = 'user,public_repo,repo'
 		oauth_url = base_url + "?client_id=" + CLIENT_ID + "&redirect_uri=" + redirect_uri + "&scope=" + scope + "&state=" + STATE
 		return HttpResponseRedirect(oauth_url)
