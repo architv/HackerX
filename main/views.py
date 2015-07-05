@@ -10,6 +10,7 @@ from operator import itemgetter
 # Create your views here.
 def home(request, user_name):
 	user = User.objects.get(user_name=user_name)
+	print user.required_github_data
 	if user.required_github_data:
 		return render(request, 'main/index.html', {'user_name': user_name, 'github_data': user.required_github_data})
 	
@@ -29,6 +30,7 @@ def home(request, user_name):
 		})
 	user.github_data = github_data
 	user.required_github_data = required_github_data
+	print required_github_data
 	user.save()
 	return render(request, 'main/index.html', {'user_name': user_name, 'github_data': required_github_data})
 
