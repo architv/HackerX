@@ -95,7 +95,7 @@
                     // Using the CSRFToken value acquired earlier
                     var csrftoken = getCookie('csrftoken');
                     xhr.setRequestHeader("X-CSRFToken", csrftoken);
-                }
+                // }
             },
             success: function(data) {
                 console.log(data);
