@@ -1,33 +1,47 @@
+{% extends "main/base.html" %}
 {% load staticfiles %}
 {% load json_filters %}
-<head>
+{% block head %}
 	<link rel="stylesheet" type="text/css" href="{% static 'main/gridster.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'main/style.css' %}">
-</head>
-<h1>{{ user_name }}</h1>
+{% endblock %}
 
+{% block topbar %}
+    {% block image %}
+    <img src="{{ user.image }}" align="left">
+    {% endblock %}
+    <h1>{{ user_name }}</h1>
+    <p>{{ user.location }}</p>
+    <p>{{ user.email }}</p>
+    <p>{{ user.blog }}</p>
+{% endblock %}
+
+{% block content %} 
     <div class="gridster">
 
-    <button onclick="dragStart()">Edit</button>
-    <button onclick="dragStop()">Save</button>
-    <ul>
-    	{% for repo in github_data %}
-        	<li data-row="{{ repo.positionx }}" data-col="{{ repo.positiony }}" data-sizex="1" data-sizey="1" class="collection-card">
-                <a href="{{ repo.url }}" target="_blank" style="background: #7FFF00" class="collection-card-image">
-                    <span>{{ repo.language }}</span>
-                    <h3 class="collection-card-title">{{ repo.name }}</h3>
-                </a>
-                <p class="collection-card-body">{{ repo.description }}</p>
-                <div class="collection-card-meta">
-                    <span>{{ repo.stars }}</span>
-                    <span>{{ repo.forks }}</span>
-                </div>
-            </li>
-        {% endfor %}
-    </ul>
-</div>
+        <button onclick="dragStart()">Edit</button>
+        <button onclick="dragStop()">Save</button>
+        <ul>
+        	{% for repo in github_data %}
+            	<li data-row="{{ repo.positionx }}" data-col="{{ repo.positiony }}" data-sizex="1" data-sizey="1" class="collection-card">
+                    <a href="{{ repo.url }}" target="_blank" style="background: #7FFF00" class="collection-card-image">
+                        <span>{{ repo.language }}</span>
+                        <h3 class="collection-card-title">{{ repo.name }}</h3>
+                    </a>
+                    <p class="collection-card-body">{{ repo.description }}</p>
+                    <div class="collection-card-meta">
+                        <span>{{ repo.stars }}</span>
+                        <span>{{ repo.forks }}</span>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
 
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+{% block scripts %}
+
+<script type="text/javascript" src="{% static 'js/jquery-2.1.4.min.js' %}"></script>
 
 <script type="text/javascript" src="{% static 'main/gridster.js' %}"></script>
 
@@ -119,3 +133,4 @@
         }).data('gridster').disable();
     });
 </script>
+{% endblock %}
