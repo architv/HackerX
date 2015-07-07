@@ -8,19 +8,22 @@
 
 {% block topbar %}
     {% block image %}
-    <img src="{{ user.image }}" align="left">
+    <img src="{{ user.avatar_url }}" class="img-responsive img-circle profile-image">
     {% endblock %}
-    <h1>{{ user_name }}</h1>
-    <p>{{ user.location }}</p>
-    <p>{{ user.email }}</p>
-    <p>{{ user.blog }}</p>
+    {% block info %}
+    <span><h1>{{ user_name }}</h1></span>
+    <span>{{ user.location }}</span>
+    <span>{{ user.email }}</span>
+    <span>{{ user.blog_url }}</span>
+    <span>{{ user.company }}</span>
+    {% endblock %}
 {% endblock %}
 
 {% block content %} 
     <div class="gridster">
 
-        <button onclick="dragStart()">Edit</button>
-        <button onclick="dragStop()">Save</button>
+        <button class="btn btn-primary" onclick="dragStart()">Edit</button>
+        <button class="btn btn-primary" onclick="dragStop()">Save</button>
         <ul>
         	{% for repo in github_data %}
             	<li data-row="{{ repo.positionx }}" data-col="{{ repo.positiony }}" data-sizex="1" data-sizey="1" class="collection-card">

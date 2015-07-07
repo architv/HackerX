@@ -12,7 +12,7 @@ def home(request, user_name):
 	user = User.objects.get(user_name=user_name)
 	print user.required_github_data
 	if user.required_github_data:
-		return render(request, 'main/index.html', {'user_name': user_name, 'github_data': user.required_github_data})
+		return render(request, 'main/index.html', {'user_name': user_name, 'github_data': user.required_github_data, 'user':user})
 	
 	github_data = gtihub_api_request("GET", user.access_token, "/user/repos")
 	required_github_data = []

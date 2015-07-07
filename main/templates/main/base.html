@@ -7,22 +7,24 @@
 </head>
 
 <body>
-	<div id="topbar">
-		{% block topbar %}
-		<div id = "profile-image">{% block image %}{% endblock %}</div>
-		<div id = "profile-info">{% block info %}{% endblock %}</div>
-		{% endblock %}
+	<div class="container-fluid">
+		<div class="row topbar">
+			{% block topbar %}
+			<div class="col-md-pull-6">{% block image %}{% endblock %}</div>
+			<div class="col-md-push-6 col-md-offset-2">{% block info %}{% endblock %}</div>
+			{% endblock %}
+		</div>
 	</div>
 
 	<div id="tabs">
-		<ul>
+		<ul class="list-inline">
 			<li>Hacker Profile</li>
 			<li>Hacker Collection</li>
 			<li>Hacker Stats</li>
 		</ul>
 	</div>
 	
-	<div id="content">
+	<div class="container">
 		{% block content %}{% endblock %}
 	</div>
 
