@@ -3,6 +3,7 @@
 	<title>HackerX: Customize your github profile</title>
 	{% load staticfiles %}
 	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 	{% block head %}{% endblock %}
 </head>
 
@@ -10,18 +11,8 @@
 	<div class="container-fluid">
 		<div class="row topbar">
 			{% block topbar %}
-			<div class="col-md-pull-6">{% block image %}{% endblock %}</div>
-			<div class="col-md-push-6 col-md-offset-2">{% block info %}{% endblock %}</div>
 			{% endblock %}
 		</div>
-	</div>
-
-	<div id="tabs">
-		<ul class="list-inline">
-			<li>Hacker Profile</li>
-			<li>Hacker Collection</li>
-			<li>Hacker Stats</li>
-		</ul>
 	</div>
 	
 	<div class="container">

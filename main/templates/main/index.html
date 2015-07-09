@@ -7,39 +7,36 @@
 {% endblock %}
 
 {% block topbar %}
-    {% block image %}
-    <img src="{{ user.avatar_url }}" class="img-responsive img-circle profile-image">
-    {% endblock %}
-    {% block info %}
-    <span><h1>{{ user_name }}</h1></span>
-    <span>{{ user.location }}</span>
-    <span>{{ user.email }}</span>
-    <span>{{ user.blog_url }}</span>
-    <span>{{ user.company }}</span>
-    {% endblock %}
+    <div class="col-md-4 col-md-offset-1">
+        <img src="{{ user.avatar_url }}" class="img-responsive img-circle profile-image">
+    </div>
+    <div class="col-md-6 profile-info">
+        <span><h1>{{ user_name }}</h1></span>
+        <span><i class="fa fa-map-marker"></i> {{ user.location }}</span><br>
+        <span><i class="fa fa-envelope-o"></i> {{ user.email }}</span><br>
+        <span><i class="fa fa-rss"></i> {{ user.blog_url }}</span><br>
+        <span><i class="fa fa-building-o"></i> {{ user.company }}</span><br>
+    </div>
 {% endblock %}
 
-{% block content %} 
-    <div class="gridster">
+{% block content %}
+<div>
 
-        <button class="btn btn-primary" onclick="dragStart()">Edit</button>
-        <button class="btn btn-primary" onclick="dragStop()">Save</button>
-        <ul>
-        	{% for repo in github_data %}
-            	<li data-row="{{ repo.positionx }}" data-col="{{ repo.positiony }}" data-sizex="1" data-sizey="1" class="collection-card">
-                    <a href="{{ repo.url }}" target="_blank" style="background: #7FFF00" class="collection-card-image">
-                        <span>{{ repo.language }}</span>
-                        <h3 class="collection-card-title">{{ repo.name }}</h3>
-                    </a>
-                    <p class="collection-card-body">{{ repo.description }}</p>
-                    <div class="collection-card-meta">
-                        <span>{{ repo.stars }}</span>
-                        <span>{{ repo.forks }}</span>
-                    </div>
-                </li>
-            {% endfor %}
-        </ul>
-    </div>
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist" id="githubTabs" data-tabs="tabs">
+    <li role="presentation" class="active"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Hacker Profile</a></li>
+    <li role="presentation"><a href="#stats" aria-controls="stats" role="tab" data-toggle="tab">Hacker Stats</a></li>
+    <li role="presentation"><a href="#collections" aria-controls="collections" role="tab" data-toggle="tab">Hacker Collections</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane" id="profile">{% block profile %}{% endblock %}</div>
+    <div role="tabpanel" class="tab-pane" id="stats">{% block stats %}{% endblock %}</div>
+    <div role="tabpanel" class="tab-pane" id="collections">{% block collections %}{% endblock %}</div>
+  </div>
+
+</div>
 {% endblock %}
 
 {% block scripts %}

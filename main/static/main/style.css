@@ -79,9 +79,15 @@ p {
 
 .topbar {
   background-color: #e1e8ed;
+  height: 35%;
 }
 
 .profile-image {
-  max-width: 10% !important;
+  max-width: 35% !important;
   height: auto;
+  margin: 10% auto;
+}
+
+.profile-info {
+  margin: 0 auto;
 }

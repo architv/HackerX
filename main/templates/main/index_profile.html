@@ -1,0 +1,26 @@
+{% extends "main/index.html" %}
+{% load staticfiles %}
+{% load json_filters %}
+{% block profile %}
+<p> Will this ever work? </p>
+<div class="gridster">
+
+    <button class="btn btn-primary" onclick="dragStart()">Edit</button>
+    <button class="btn btn-primary" onclick="dragStop()">Save</button>
+    <ul>
+    	{% for repo in github_data %}
+        	<li data-row="{{ repo.positionx }}" data-col="{{ repo.positiony }}" data-sizex="1" data-sizey="1" class="collection-card">
+                <a href="{{ repo.url }}" target="_blank" style="background: #7FFF00" class="collection-card-image">
+                    <span>{{ repo.language }}</span>
+                    <h3 class="collection-card-title">{{ repo.name }}</h3>
+                </a>
+                <p class="collection-card-body">{{ repo.description }}</p>
+                <div class="collection-card-meta">
+                    <span>{{ repo.stars }}</span>
+                    <span>{{ repo.forks }}</span>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
