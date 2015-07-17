@@ -36,20 +36,26 @@ def home(request, user_name):
 
 @require_http_methods(["PUT", "POST"])
 def update(request, user_name):
-	print user_name
+	# print user_name
 	# print request.POST.iterlists()
+	print "0"
 	data_as_dict = dict(request.POST.iterlists())
-	print data_as_dict
+	print "1"
+	# print data_as_dict
 	# print user_name
 	github_data = json.loads(data_as_dict.keys()[0])
-	print github_data
+	print "2"
+	# print github_data
 	# print github_data
 	required_github_data = github_data.get("github_data", None)
-	print required_github_data
+	print "3"
+	# print required_github_data
 	if required_github_data and user_name:
+		print "4"
 		required_github_data = sorted(required_github_data, key=itemgetter('position'))
 		user = User.objects.get(user_name=user_name)
 		if user:
+			print "5"
 			user.required_github_data = required_github_data
 			user.save()
 		return HttpResponse(status=204)

@@ -24,16 +24,16 @@
 
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist" id="githubTabs" data-tabs="tabs">
-    <li role="presentation" class="active"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Hacker Profile</a></li>
-    <li role="presentation"><a href="#stats" aria-controls="stats" role="tab" data-toggle="tab">Hacker Stats</a></li>
-    <li role="presentation"><a href="#collections" aria-controls="collections" role="tab" data-toggle="tab">Hacker Collections</a></li>
+    <li class="active"><a href="#profile" role="tab" data-toggle="tab">Hacker Profile</a></li>
+    <li><a href="#stats" role="tab" data-toggle="tab">Hacker Stats</a></li>
+    <li><a href="#collections" role="tab" data-toggle="tab">Hacker Collections</a></li>
   </ul>
 
   <!-- Tab panes -->
-  <div class="tab-content">
-    <div role="tabpanel" class="tab-pane" id="profile">{% block profile %}{% endblock %}</div>
-    <div role="tabpanel" class="tab-pane" id="stats">{% block stats %}{% endblock %}</div>
-    <div role="tabpanel" class="tab-pane" id="collections">{% block collections %}{% endblock %}</div>
+  <div class="tab-content" style=" overflow: hidden;">
+    <div class="tab-pane active" id="profile">{% block profile %}{% endblock %}</div>
+    <div class="tab-pane" id="stats">{% block stats %}{% endblock %}</div>
+    <div class="tab-pane" id="collections">{% block collections %}{% endblock %}</div>
   </div>
 
 </div>
@@ -41,9 +41,9 @@
 
 {% block scripts %}
 
-<script type="text/javascript" src="{% static 'js/jquery-2.1.4.min.js' %}"></script>
-
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="{% static 'main/gridster.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
 
 <script type="text/javascript">
 
