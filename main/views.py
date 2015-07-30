@@ -51,11 +51,9 @@ def update(request, user_name):
 	print "3"
 	# print required_github_data
 	if required_github_data and user_name:
-		print "4"
 		required_github_data = sorted(required_github_data, key=itemgetter('position'))
 		user = User.objects.get(user_name=user_name)
 		if user:
-			print "5"
 			user.required_github_data = required_github_data
 			user.save()
 		return HttpResponse(status=204)

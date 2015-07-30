@@ -11,6 +11,7 @@
         	<li data-row="{{ repo.positionx }}" data-col="{{ repo.positiony }}" data-sizex="1" data-sizey="1" class="collection-card">
                 <div class="collection-card-image {{ repo.language }}-color">
                     <div class="collection-card-language">{{ repo.language }}</div>
+                    <a onclick="removeCard({{ repo.positionx }}, {{ repo.positiony }})"><div class="collection-card-delete">x</div></a>
                     <div class="collection-card-title">
                         <h3><a href="{{ repo.url }}" target="_blank">{{ repo.name }}</a></h3>
                     </div>
